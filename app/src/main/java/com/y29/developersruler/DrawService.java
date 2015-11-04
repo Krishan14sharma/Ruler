@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+
+import com.y29.developersruler.view.DevView;
+import com.y29.developersruler.view.HorizontalRuler;
 
 public class DrawService extends Service {
 
@@ -21,11 +23,13 @@ public class DrawService extends Service {
         super.onCreate();
 
         windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
-        view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.content_main, null);
+//        view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.content_main, null);
+        final DevView ruler = new HorizontalRuler(getApplicationContext());
+        view = ruler.getView();
 
         params = new WindowManager.LayoutParams(
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.WRAP_CONTENT,
+                ruler.getWidthFlag(),
+                ruler.getHeightFlag(),
                 WindowManager.LayoutParams.TYPE_PHONE,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
