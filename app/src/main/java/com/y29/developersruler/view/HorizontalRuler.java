@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.y29.developersruler.R;
+import com.y29.developersruler.util.DimensionUtil;
 
 /**
  * Created by krishan on 4/11/15.
@@ -32,6 +33,6 @@ public class HorizontalRuler implements DevView {
 
     @Override
     public int getHeightFlag() {
-        return 85;
+        return (int) DimensionUtil.convertDpToPixel(72);
     }
 }
